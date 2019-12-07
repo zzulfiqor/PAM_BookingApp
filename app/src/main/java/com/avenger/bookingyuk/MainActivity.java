@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     //tes
+    //terserah
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
