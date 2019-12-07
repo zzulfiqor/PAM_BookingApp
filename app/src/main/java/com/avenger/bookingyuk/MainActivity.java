@@ -9,6 +9,8 @@ public class MainActivity extends AppCompatActivity {
     //terserah
     //mau aku booking ga?
     //udah ni
+    //OYOdiskon
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
