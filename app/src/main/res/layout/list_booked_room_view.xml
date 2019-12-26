@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TextView
+    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="BOOKINGIN AJA!"
@@ -26,11 +26,12 @@
         android:padding="5dp"
         android:paddingStart="20dp"
         android:textStyle="bold"
-        />
+    />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+    />
 
-/>
+
 </LinearLayout>
