@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".View.Activity.OnBoardingActivity">
 
     <androidx.viewpager.widget.ViewPager
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_transparent"
         android:text="Skip >"
+        android:textColor="#363636"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

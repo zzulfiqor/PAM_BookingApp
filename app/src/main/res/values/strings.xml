@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Booking Yuk</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onboard1">
+        Cara terbaru untuk meminjam ruangan
+    </string>
+
+    <string name="onboard2">
+        Membantu lancarnya kegiatan kampus
+    </string>
+
+    <string name="onboard3">
+        Mempersingkat waktu perizinan
+    </string>
+
 </resources>
