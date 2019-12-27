@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Description"
+    tools:context=".View.Activity.Description"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,12 +13,7 @@
         android:layout_height="350dp"
         android:orientation="vertical">
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Cinema"
-        android:textSize="30dp">
-    </TextView>
+
 
 
 

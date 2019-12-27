@@ -1,14 +1,16 @@
-package com.avenger.bookingyuk;
+package com.avenger.bookingyuk.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PesananFinal extends AppCompatActivity {
+import com.avenger.bookingyuk.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pesanan_final);
+        setContentView(R.layout.activity_login);
     }
 }
