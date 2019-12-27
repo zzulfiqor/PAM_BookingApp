@@ -8,13 +8,13 @@ import com.avenger.bookingyuk.View.Fragments.OnBoarding1;
 import com.avenger.bookingyuk.View.Fragments.OnBoarding2;
 import com.avenger.bookingyuk.View.Fragments.OnBoarding3;
 
-public class FragmentPagerAdapter extends androidx.fragment.app.FragmentPagerAdapter {
+public class OnBoardingPagerAdapter extends androidx.fragment.app.FragmentPagerAdapter {
 
-    public FragmentPagerAdapter(@NonNull FragmentManager fm) {
+    public OnBoardingPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
-    public FragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+    public OnBoardingPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
