@@ -15,12 +15,77 @@
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="Cinema"
         android:textSize="30dp">
     </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#11861E"
+        android:layout_marginTop="20dp"
+        android:text="Jadwal Pesan Ruangan"
+        android:textColor="#ffff"
+        android:padding="5dp"
+        android:paddingStart="20dp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senin\n1 jan 2020"
+            android:background="@color/list"
+            />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selasa\n2 jan 2020"
+            android:layout_marginLeft="20dp"
+            android:background="@color/list"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rabu\n3 jan 2020"
+            android:layout_marginLeft="20dp"
+            android:background="@color/list"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rabu\n4 jan 2020"
+            android:background="@color/list"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@color/list"
+            android:text="Kamis\n5 jan 2020" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="#A9A9A9"
+            android:text="Jumat\n6 jan 2020" />
+    </LinearLayout>
 
 
 </LinearLayout>
