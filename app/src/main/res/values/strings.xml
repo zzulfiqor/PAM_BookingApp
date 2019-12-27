@@ -12,5 +12,8 @@
     <string name="onboard3">
         Mempersingkat waktu perizinan
     </string>
+    <string name="selamat_datang">Selamat datang</string>
+    <string name="login_untuk_dapat_menggunakan_aplikasi_ini">Login untuk dapat menggunakan aplikasi ini</string>
+    <string name="login_error_click_here">Login Error ? Click here.</string>
 
 </resources>
