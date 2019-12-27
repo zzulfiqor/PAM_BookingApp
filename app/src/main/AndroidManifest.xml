@@ -27,6 +27,9 @@
         <activity android:name=".View.Activity.ListRuangan" />
         <activity android:name=".View.Activity.SecondActivity" />
         <activity android:name=".View.Activity.MainActivity" />
+        <activity android:name=".View.Activity.PesananFinal" />
+
+
     </application>
 
 </manifest>
