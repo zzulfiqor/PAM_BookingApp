@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.avenger.bookingyuk.Models.ModelMahasiswa;
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
-import com.avenger.bookingyuk.Temp;
 
 public class Home extends AppCompatActivity {
 
     ImageView btnHome, btnRoom, btnProfile;
     TextView nimMhs;
-    Temp temp = new Temp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class Home extends AppCompatActivity {
         btnProfile = findViewById(R.id.btnProfile);
         nimMhs = findViewById(R.id.nim_mhs);
 
-        nimMhs.setText(temp.getNim());
+        nimMhs.setText(Preferences.getLoggedInUser(getBaseContext()));
 
         btnRoom.setOnClickListener(new View.OnClickListener() {
             @Override

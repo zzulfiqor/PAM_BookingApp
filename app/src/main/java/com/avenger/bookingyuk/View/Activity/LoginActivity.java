@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avenger.bookingyuk.Models.ModelMahasiswa;
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
-import com.avenger.bookingyuk.Temp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     ModelMahasiswa mhs;
     ImageView logoAmikom;
     String transitionName = "logo_amikom";
-    Temp temp = new Temp();
 
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -60,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
                             Toast.makeText(getBaseContext(),"Login Berhasil, Selamat datang :"+mhs_.getNama_mahasiswa(),Toast.LENGTH_LONG).show();
-                            temp.setNim(mhs_.getNama_mahasiswa());
+                            Preferences.setLoggedInUser(getBaseContext(),mhs_.getNIM());
 
                             Intent intent = new Intent(LoginActivity.this, Home.class);
                             startActivity(intent);
