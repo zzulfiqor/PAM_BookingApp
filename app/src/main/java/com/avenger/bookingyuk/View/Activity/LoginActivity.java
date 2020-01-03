@@ -57,12 +57,16 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
 
+
                         if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
                             Toast.makeText(getBaseContext(),"Login Berhasil, Selamat datang :"+mhs_.getNama_mahasiswa(),Toast.LENGTH_LONG).show();
                             Preferences.setLoggedInUser(getBaseContext(),mhs_.getNIM());
 
+                            View sharedView = logoAmikom;
+                            ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, sharedView, transitionName);
+
                             Intent intent = new Intent(LoginActivity.this, Home.class);
-                            startActivity(intent);
+                            startActivity(intent, transitionActivityOptions.toBundle());
                         }else{
                             Toast.makeText(getBaseContext(),"Login Gagal",Toast.LENGTH_LONG).show();
 
