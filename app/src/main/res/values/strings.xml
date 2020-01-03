@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Booking Yuk</string>
+
+    <string name="onboard1">
+        Cara terbaru untuk meminjam ruangan
+    </string>
+
+    <string name="onboard2">
+        Membantu lancarnya kegiatan kampus
+    </string>
+
+    <string name="onboard3">
+        Mempersingkat waktu perizinan
+    </string>
+    <string name="selamat_datang">Selamat datang</string>
+    <string name="login_untuk_dapat_menggunakan_aplikasi_ini">Login untuk dapat menggunakan aplikasi ini</string>
+    <string name="login_error_click_here">Login Error ? Click here.</string>
+    <string name="tap_disini_untuk_membuat_akun_baru">tap disini untuk membuat akun baru</string>
+    <string name="halaman_registrasi">Halaman Registrasi</string>
+
 </resources>

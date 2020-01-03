@@ -3,5 +3,7 @@
     <color name="colorPrimary">#8022A7</color>
     <color name="colorPrimaryDark">#571774</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="RedList">#DA0101</color>
+    <color name="white">#fff</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="softblack">#4D4D4D</color>
 </resources>

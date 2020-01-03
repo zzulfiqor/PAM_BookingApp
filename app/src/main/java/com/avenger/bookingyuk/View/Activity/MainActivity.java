@@ -1,14 +1,17 @@
-package com.avenger.bookingyuk;
+package com.avenger.bookingyuk.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SplashScreen extends AppCompatActivity {
+import com.avenger.bookingyuk.R;
+
+public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_main);
     }
 }
