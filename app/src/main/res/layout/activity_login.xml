@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/selamat_datang"
-        android:textSize="15pt"
+        android:textSize="13pt"
         android:textStyle="bold"
         android:textColor="@color/softblack"
         app:layout_constraintStart_toStartOf="@+id/logoAmikom"
@@ -38,7 +38,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/login_untuk_dapat_menggunakan_aplikasi_ini"
         android:textColor="@color/softblack"
-        android:textSize="6pt"
+        android:textSize="5pt"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
