@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="4dp"
-            android:text="XyZuxza"
+            android:text="Saya Sendiri"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
