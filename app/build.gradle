@@ -40,5 +40,4 @@ dependencies {
     implementation "com.andkulikov:transitionseverywhere:2.0.0"
 
 
-
 }
