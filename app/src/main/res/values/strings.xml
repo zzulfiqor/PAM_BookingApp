@@ -18,4 +18,8 @@
     <string name="tap_disini_untuk_membuat_akun_baru">tap disini untuk membuat akun baru</string>
     <string name="halaman_registrasi">Halaman Registrasi</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="halo">Halo,</string>
+
 </resources>
