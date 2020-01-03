@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +39,23 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mhs.setNIM(etNIM.getText().toString());
+                String pass = etPassword.getText().toString();
+                String nim = etNIM.getText().toString();
+                if (nim.isEmpty()){
+                    Toast.makeText(getBaseContext(), "NIM Harus Diisi",Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    mhs.setNIM(etNIM.getText().toString());
+                }
                 mhs.setNama_mahasiswa(etNama.getText().toString());
                 mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
-                mhs.setPassword_mahasiswa(etPassword.getText().toString());
+                if (TextUtils.isEmpty(pass)||pass.length()<8) {
+                    Toast.makeText(getBaseContext(), "Damn Your Password is to short !!",Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    mhs.setPassword_mahasiswa(pass);
+                }
+
                 mhsRef.child(mhs.getNIM()).setValue(mhs);
 
                 Toast.makeText(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG).show();
