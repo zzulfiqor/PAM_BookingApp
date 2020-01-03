@@ -9,13 +9,14 @@
     tools:context=".View.Activity.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/logoAmikom"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="82dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:transitionName="logo_amikom"
         app:srcCompat="@drawable/amikomlogo" />
 
     <TextView
@@ -27,8 +28,8 @@
         android:textSize="15pt"
         android:textStyle="bold"
         android:textColor="@color/softblack"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/logoAmikom"
+        app:layout_constraintTop_toBottomOf="@+id/logoAmikom" />
 
     <TextView
         android:id="@+id/textView7"
@@ -42,19 +43,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:drawableStart="@drawable/ic_mail_black_24dp"
-        android:hint="   ex: zzulfior@gmail.com"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:hint="   ex: 17.11.1669"
         app:layout_constraintEnd_toEndOf="parent"
         android:focusedByDefault="false"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/et_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -63,8 +64,8 @@
         android:focusedByDefault="false"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_login"
@@ -77,14 +78,16 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <TextView
+        android:id="@+id/tv_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/login_error_click_here"
+        android:text="@string/tap_disini_untuk_membuat_akun_baru"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="@+id/btn_login"

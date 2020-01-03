@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/colorPrimaryDark">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorPrimaryDark" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <item android:id="@android:id/background">
 
-    <gradient
-        android:startColor="@color/colorPrimary"
-        android:endColor="@color/colorPrimaryDark"
-        android:angle="-90"
-        />
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <gradient
+                android:startColor="@color/colorPrimary"
+                android:endColor="@color/colorPrimaryDark"
+                android:angle="-90"
+                />
 
-    <corners
-        android:radius="10dp"
-        />
+            <corners
+                android:radius="10dp"
+                />
 
-</shape>
+        </shape>
+    </item>
+</ripple>

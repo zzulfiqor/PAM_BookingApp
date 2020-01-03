@@ -9,17 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Activity.SplashScreen" >
+        <activity android:name=".View.Activity.RegisterActivity"></activity>
+        <activity android:name=".View.Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".View.Activity.OnBoardingActivity">
-
-        </activity>
+        <activity android:name=".View.Activity.OnBoardingActivity"></activity>
         <activity android:name=".View.Activity.LoginActivity" />
         <activity android:name=".View.Activity.Description" />
         <activity android:name=".View.Activity.Profile" />
@@ -28,8 +26,6 @@
         <activity android:name=".View.Activity.SecondActivity" />
         <activity android:name=".View.Activity.MainActivity" />
         <activity android:name=".View.Activity.PesananFinal" />
-
-
     </application>
 
 </manifest>
