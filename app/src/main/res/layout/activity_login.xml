@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/logoAmikom"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="82dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +88,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/tap_disini_untuk_membuat_akun_baru"
         android:clickable="true"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="@+id/btn_login"
