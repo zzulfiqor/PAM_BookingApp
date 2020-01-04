@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.Activity.finalstep"></activity>
         <activity android:name=".View.Activity.success" />
         <activity android:name=".View.Activity.RegisterActivity" />
         <activity android:name=".View.Activity.SplashScreen">
