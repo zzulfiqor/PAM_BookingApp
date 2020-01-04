@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -33,12 +34,16 @@ public class RuanganAdapter extends RecyclerView.Adapter<RuanganAdapter.Viewhold
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         ModelRuangan modelRuangan = listRuangan.get(position);
-        
+        Glide.with(holder.itemView.getContext())
+                .load(modelRuangan.getPhoto())
+                .apply(new RequestOptions().override(55,55))
+                .into(holder.imgRuangan);
+        holder.tvRuangan.setText(modelRuangan.getNamaRuangan());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listRuangan.size();
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
@@ -49,11 +54,6 @@ public class RuanganAdapter extends RecyclerView.Adapter<RuanganAdapter.Viewhold
             super(itemView);
             imgRuangan = itemView.findViewById(R.id.img_ruangan);
             tvRuangan = itemView.findViewById(R.id.nama_ruangan);
-        }
-
-        public void bind(ModelRuangan ruangan){
-            tvRuangan.setText(ruangan.getNamaRuangan());
-            imgRuangan.setImageResource(ruangan.getPhoto());
         }
     }
 }
