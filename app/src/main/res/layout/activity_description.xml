@@ -7,13 +7,13 @@
     tools:context=".View.Activity.Description"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:background="@drawable/backgroundprofile"
+    <ImageView
+        android:id="@+id/gmb_ruangan"
+        android:src="@color/colorAccent"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_height="350dp"/>
     <TextView
+        android:id="@+id/nm_ruangan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cinema"
@@ -43,6 +43,7 @@
             />
 
         <Button
+            android:id="@+id/btnPesan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Selasa\n2 jan 2020"

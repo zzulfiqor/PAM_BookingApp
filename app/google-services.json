@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "401443655750",
+    "firebase_url": "https://booking-yuk-36c63.firebaseio.com",
+    "project_id": "booking-yuk-36c63",
+    "storage_bucket": "booking-yuk-36c63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401443655750:android:1beb4406529153c562ba47",
+        "android_client_info": {
+          "package_name": "com.avenger.bookingyuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401443655750-e8pd1jifrucmkei2si2smp4ehb2b3e7l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.avenger.bookingyuk",
+            "certificate_hash": "5e377cf783757e15a1b1fd3967724f149cbc9121"
+          }
+        },
+        {
+          "client_id": "401443655750-r0ffeg6an6pjnsgsn6auhk913th28bbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPgCxURIXJ_5zXFvvP3DyqbE6z3Lme4As"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401443655750-r0ffeg6an6pjnsgsn6auhk913th28bbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

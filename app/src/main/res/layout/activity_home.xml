@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,85 +9,59 @@
     android:gravity="center_horizontal"
     tools:context=".View.Activity.Home">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="BOOKED"
-        android:textSize="25dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp">
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="left"
-        android:paddingLeft="-30dp"
-        android:src="@drawable/poster1"
-        />
-
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="left"
-        android:layout_marginLeft="-70dp"
-        android:src="@drawable/poster1"
-        />
-</LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="RUANG KOSONG HARI INI"
-        android:textSize="25dp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="left"
-            android:src="@drawable/cinema"
-            />
-    </LinearLayout>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/amikomlogo"
+            android:transitionName="logo_amikom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+
+        <TextView
+            android:id="@+id/nim_mhs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text=" "
+            android:textColor="@color/softblack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HOME"
-            />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ROOM"
-            android:layout_marginLeft="20dp"
-            />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PROFILE"
-            android:layout_marginLeft="20dp"
-            />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
