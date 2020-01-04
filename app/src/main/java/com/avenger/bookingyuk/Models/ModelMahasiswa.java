@@ -1,7 +1,6 @@
 package com.avenger.bookingyuk.Models;
 
 public class ModelMahasiswa {
-    private String NIM;
 
     public String getNIM() {
         return NIM;
@@ -35,6 +34,7 @@ public class ModelMahasiswa {
         this.alamat_mahasiswa = alamat_mahasiswa;
     }
 
+    private String NIM;
     private String password_mahasiswa;
     private String nama_mahasiswa;
     private String alamat_mahasiswa;

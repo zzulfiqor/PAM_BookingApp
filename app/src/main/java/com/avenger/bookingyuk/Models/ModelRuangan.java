@@ -1,40 +1,70 @@
 package com.avenger.bookingyuk.Models;
 
 public class ModelRuangan {
-    private int photo;
-    private String namaRuangan;
-    private String waktuBooking;
-    private String event;
+    private String nama_ruang;
+    private String catatan_ruangan;
+    private String foto_ruangan;
+    private Boolean is_ac;
+    private Boolean is_projector;
+    private String kapasitas_ruang;
 
-    public String getNamaRuangan() {
-        return namaRuangan;
+    public ModelRuangan(String nama_ruang, String catatan_ruangan, String foto_ruangan, Boolean is_ac, Boolean is_projector, String kapasitas_ruang) {
+        this.nama_ruang = nama_ruang;
+        this.catatan_ruangan = catatan_ruangan;
+        this.foto_ruangan = foto_ruangan;
+        this.is_ac = is_ac;
+        this.is_projector = is_projector;
+        this.kapasitas_ruang = kapasitas_ruang;
     }
 
-    public void setNamaRuangan(String namaRuangan) {
-        this.namaRuangan = namaRuangan;
+    public ModelRuangan() {
     }
 
-    public String getWaktuBooking() {
-        return waktuBooking;
+    public String getNama_ruang() {
+        return nama_ruang;
     }
 
-    public void setWaktuBooking(String waktuBooking) {
-        this.waktuBooking = waktuBooking;
+    public void setNama_ruang(String nama_ruang) {
+        this.nama_ruang = nama_ruang;
     }
 
-    public String getEvent() {
-        return event;
+    public String getCatatan_ruangan() {
+        return catatan_ruangan;
     }
 
-    public void setEvent(String event) {
-        this.event = event;
+    public void setCatatan_ruangan(String catatan_ruangan) {
+        this.catatan_ruangan = catatan_ruangan;
     }
 
-    public int getPhoto() {
-        return photo;
+    public String getFoto_ruangan() {
+        return foto_ruangan;
     }
 
-    public void setPhoto(int photo) {
-        this.photo = photo;
+    public void setFoto_ruangan(String foto_ruangan) {
+        this.foto_ruangan = foto_ruangan;
+    }
+
+    public Boolean getIs_ac() {
+        return is_ac;
+    }
+
+    public void setIs_ac(Boolean is_ac) {
+        this.is_ac = is_ac;
+    }
+
+    public Boolean getIs_projector() {
+        return is_projector;
+    }
+
+    public void setIs_projector(Boolean is_projector) {
+        this.is_projector = is_projector;
+    }
+
+    public String getKapasitas_ruang() {
+        return kapasitas_ruang;
+    }
+
+    public void setKapasitas_ruang(String kapasitas_ruang) {
+        this.kapasitas_ruang = kapasitas_ruang;
     }
 }

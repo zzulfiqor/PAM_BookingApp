@@ -50,7 +50,6 @@ public class Home extends AppCompatActivity {
 
         nimMhs = findViewById(R.id.nim_mhs);
 
-        nimMhs.setText(Preferences.getLoggedInUser(getBaseContext()));
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();

@@ -21,8 +21,8 @@ public class RuanganData {
         ArrayList<ModelRuangan> list = new ArrayList<>();
         for (int i = 0; i < ruangangambar.length; i++) {
             ModelRuangan ruangan = new ModelRuangan();
-            ruangan.setPhoto(ruangangambar[i]);
-            ruangan.setNamaRuangan(namaruangan[i]);
+//            ruangan.setPhoto(ruangangambar[i]);
+//            ruangan.setNamaRuangan(namaruangan[i]);
             list.add(ruangan);
         }
         Log.d("isi List:", list.toString());
