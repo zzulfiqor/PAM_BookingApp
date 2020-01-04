@@ -55,9 +55,12 @@ public class HomeFragment extends Fragment {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
 
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
         rvTersedia = view.findViewById(R.id.rv_ruang_tersedia);
         rvTersedia.setHasFixedSize(true);
-        rvTersedia.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvTersedia.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -72,7 +75,7 @@ public class HomeFragment extends Fragment {
             @NonNull
             @Override
             public EntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ruangan, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ruangan_tersedia, parent, false);
                 return new EntryViewHolder(view);
             }
 
@@ -100,7 +103,7 @@ public class HomeFragment extends Fragment {
             mView = itemView;
         }
         public void setTitle(String title){
-            tes = (TextView) mView.findViewById(R.id.nama_ruangan);
+            tes = (TextView) mView.findViewById(R.id.nama_ruang_tersedia);
             tes.setText(title);
         }
 

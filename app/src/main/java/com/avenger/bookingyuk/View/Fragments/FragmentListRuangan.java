@@ -80,7 +80,7 @@ public class FragmentListRuangan extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setTitle(data.getNama_ruang());
-                entryViewHolder.setKapasitas(data.getKapasitas_ruang());
+                entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
             }
         };
 

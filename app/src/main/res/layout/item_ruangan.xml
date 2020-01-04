@@ -22,8 +22,13 @@
                 android:id="@+id/img_ruangan"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="16dp"
                 android:padding="8dp"
-                android:src="@color/colorAccent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ruang_dummy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
             <TextView
@@ -31,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="13dp"
                 android:text="Nama ruangan"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
@@ -45,8 +50,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_purple_rounded"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="3dp"
+                android:paddingVertical="1dp"
                 android:text="1234"
+                android:textSize="5pt"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@+id/nama_ruangan"
                 app:layout_constraintTop_toBottomOf="@+id/nama_ruangan" />
