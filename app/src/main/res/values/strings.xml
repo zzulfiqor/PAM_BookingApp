@@ -22,4 +22,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="halo">Halo,</string>
 
+    <array name="gambar_ruangan">
+        <item>@drawable/cinema</item>
+        <item>@drawable/cinema</item>
+        <item>@drawable/cinema</item>
+    </array>
+
+    <string-array name="nama_ruangan">
+        <item>Cinema Amikom</item>
+        <item>Cinema Amikom</item>
+        <item>Cinema Amikom</item>
+    </string-array>
 </resources>
