@@ -1,4 +1,4 @@
-package com.avenger.bookingyuk;
+package com.avenger.bookingyuk.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Activity.Home;
 
 public class SuccessBookActivity extends AppCompatActivity {

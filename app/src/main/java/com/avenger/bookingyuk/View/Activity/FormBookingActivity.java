@@ -6,17 +6,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.avenger.bookingyuk.Models.ModelBooked;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
-import com.avenger.bookingyuk.SuccessBookActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.vivekkaushik.datepicker.DatePickerTimeline;
 import com.vivekkaushik.datepicker.OnDateSelectedListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class FormBookingActivity extends AppCompatActivity {
 
@@ -24,12 +30,27 @@ public class FormBookingActivity extends AppCompatActivity {
     EditText etOrganisasi, etAcara;
     DatePickerTimeline datePicker;
     Button btnPinjam;
+    int hari, tahun;
+    int monthRead;
+
+    // Write a message to the database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mhsRef = database.getReference("RuanganBooked");
+
+//    Model
+    ModelBooked booked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_booking);
         componentInit();
+
+        booked = new ModelBooked();
+
+
+
+
 
         tvRuang.setText(Preferences.getNamaRuangRealDipilih(getBaseContext()));
         tvNama.setText(Preferences.getLoggedInUser(getBaseContext()));
@@ -40,7 +61,10 @@ public class FormBookingActivity extends AppCompatActivity {
         datePicker.setOnDateSelectedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(int year, int month, int day, int dayOfWeek) {
-                int monthRead = month+1;
+                monthRead = month+1;
+                hari = day;
+                tahun = year;
+
                 String datenow = day+" / 0"+monthRead+" / "+year;
                 tvTglTerpilih.setText(datenow);
             }
@@ -63,12 +87,30 @@ public class FormBookingActivity extends AppCompatActivity {
     }
 
     void showAlertPrompt(){
+
+
+
+//        get time and date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+        final String currentDateandTime = sdf.format(new Date());
+        String idBooked = ""+Preferences.getLoggedInNim(getBaseContext())+""+currentDateandTime;
+        Log.d("zhr",idBooked);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Apakah anda yakin akan melakukan peminjaman ruang ini ?");
         alertDialogBuilder.setPositiveButton("Yakin",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
+                        booked.setId_ruang(Preferences.getNamaRuangDipilih(getBaseContext()));
+                        booked.setNIM(Preferences.getLoggedInNim(getBaseContext()));
+                        booked.setAcara_booked(etAcara.getText().toString());
+                        booked.setTgl_booked(hari);
+                        booked.setThn_booked(tahun);
+                        booked.setBulan_booked(monthRead);
+                        booked.setOrganisasi_booked(etOrganisasi.getText().toString());
+                        booked.setId_book(""+Preferences.getLoggedInNim(getBaseContext())+""+currentDateandTime);
+                        mhsRef.child(booked.getId_book()).setValue(booked);
                         startActivity(new Intent(FormBookingActivity.this, SuccessBookActivity.class));
                         finish();
                     }

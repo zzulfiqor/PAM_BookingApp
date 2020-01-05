@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.avenger.bookingyuk.R;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -20,6 +24,9 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
                 //setelah loading maka akan langsung berpindah ke home activity
+                Date[] dates = {Calendar.getInstance().getTime(),Calendar.getInstance().getTime()};
+                Log.d("zhr",""+dates[0]);
+
                 Intent home = new Intent(getBaseContext(), OnBoardingActivity.class);
                 startActivity(home);
                 finish();
