@@ -147,21 +147,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonCalendar"
                 android:layout_width="30dp"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
+
+                android:background="@drawable/ic_date_range_black_24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView22" />
 
             <EditText
+                android:id="@+id/et_calendar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-5dp"
                 android:focusable="false"
                 android:hint="12/12/2019"
+                android:textSize="6pt"
                 app:layout_constraintBottom_toBottomOf="@+id/textView22"
-                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCalendar"
                 app:layout_constraintStart_toStartOf="@+id/editText"
                 app:layout_constraintTop_toTopOf="@+id/textView22" />
 
