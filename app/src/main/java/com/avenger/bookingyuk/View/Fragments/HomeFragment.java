@@ -30,6 +30,8 @@ import com.google.firebase.database.Query;
  */
 public class HomeFragment extends Fragment {
 
+    TextView namaHome;
+
     RecyclerView rvTersedia;
     private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
@@ -51,6 +53,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        namaHome = view.findViewById(R.id.nama_home);
+        namaHome.setText(Preferences.getLoggedInUser(getContext()));
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
