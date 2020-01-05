@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Description extends AppCompatActivity {
 
     CollapsingToolbarLayout collapsingToolbarLayout;
-    Button btnPesan;
+    Button btnPinjam;
     ImageView imgruangan;
     TextView tvRuangan, tvProyektor, tvAc, tvKapasitas, tvCatatan;
 
@@ -44,11 +44,15 @@ public class Description extends AppCompatActivity {
         idRuang = Preferences.getNamaRuangDipilih(this);
 
         componentInit();
-
         collapsingToolbarLayout = findViewById(R.id.collapsingToolbar);
-
-
         getRuang();
+
+        btnPinjam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), FormBookingActivity.class));
+            }
+        });
     }
 
     void getRuang(){
@@ -97,6 +101,7 @@ public class Description extends AppCompatActivity {
         tvKapasitas = findViewById(R.id.kapasitas_ruang_desc);
         tvProyektor = findViewById(R.id.ada_proyektor_desc);
         tvCatatan = findViewById(R.id.ruang_catatan_desc);
+        btnPinjam = findViewById(R.id.btn_pinjam);
     }
 
 }

@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.Activity.EditProfileActivity"></activity>
+        <activity android:name=".View.Activity.FormBookingActivity" />
         <activity android:name=".View.Activity.LoginBerhasilActivity" />
         <activity android:name=".View.Activity.LogoutWaitActivity" />
         <activity android:name=".View.Activity.finalstep" />

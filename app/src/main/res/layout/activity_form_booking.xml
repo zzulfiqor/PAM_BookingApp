@@ -1,103 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:padding="30dp"
+    tools:context=".View.Activity.FormBookingActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@drawable/backround_rounded_form"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageViewheader"
+        <TextView
+            android:id="@+id/textView18"
             android:layout_width="wrap_content"
-            android:layout_height="278dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Peminjaman Ruang"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/formtitle"
-            android:layout_width="match_parent"
+            android:id="@+id/nama_ruang_form"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/header_form"
+            android:text="Citra 1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="10pt"
             android:textStyle="bold"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="20sp"
-            />
+            app:layout_constraintEnd_toEndOf="@+id/textView18"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-        <EditText
-            android:id="@+id/textName"
+        <View
+            android:id="@+id/view4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginTop="20dp"
-            android:text="Nama :" />
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#C2C2C2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nama_ruang_form" />
 
-        <EditText
-            android:id="@+id/textNIM"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="NIM : "
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:id="@+id/textRoom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Ruangan : "
-            android:layout_marginTop="10dp"
-            />
-
-        <EditText
-            android:id="@+id/textOrg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Organisasi : "
-            android:layout_marginTop="10dp"
-            />
-
-        <EditText
-            android:id="@+id/textKegiatan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Kegiatan : "
-            android:layout_marginTop="10dp"
-            />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_marginBottom="32dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="16dp">
 
-            <Button
-                android:id="@+id/buttonNext"
+            <TextView
+                android:id="@+id/nama_form"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FF9800"
-                android:text="SELANJUTNYA"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="289dp" />
+                android:layout_marginTop="16dp"
+                android:text="Ahmad Zuhair Dzulfiqor"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/buttonBack"
+            <TextView
+                android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FF9800"
-                android:text="KEMBALI"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="0dp" />
+                android:layout_marginTop="8dp"
+                android:text="( 17111669 )"
+                android:textColor="@color/softblack"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/nama_form"
+                app:layout_constraintStart_toStartOf="@+id/nama_form"
+                app:layout_constraintTop_toBottomOf="@+id/nama_form" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Organisasi "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="6pt"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <EditText
+                android:id="@+id/et_organisasi_form"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="-5dp"
+                android:hint="nama organisasi"
+                android:textSize="6pt"
+                app:layout_constraintBottom_toBottomOf="@+id/textView20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView20"
+                app:layout_constraintTop_toTopOf="@+id/textView20"
+                app:layout_constraintVertical_bias="0.625" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Acara "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="6pt"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:hint="masukkan nama acara"
+                android:textSize="6pt"
+                app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView20"
+                app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Tanggal"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="6pt"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dp"
+                android:focusable="false"
+                android:hint="12/12/2019"
+                app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintStart_toStartOf="@+id/editText"
+                app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
