@@ -87,6 +87,7 @@ public class FragmentListRuangan extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
                 final String idRuang = data.getId_ruang();
+                final String namaRuang = data.getNama_ruang();
 
                 entryViewHolder.setTitle(data.getNama_ruang());
                 entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
@@ -99,6 +100,7 @@ public class FragmentListRuangan extends Fragment {
 
                         Intent i = new Intent(getContext(), Description.class);
                         Preferences.setNamaRuangDipilih(getContext(), idRuang);
+                        Preferences.setNamaRuangRealDipilih(getContext(), namaRuang);
                         startActivity(i);
                     }
                 });
