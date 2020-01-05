@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
+import com.avenger.bookingyuk.Models.ModelBooked;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
@@ -37,7 +38,7 @@ public class FragmentProfile extends Fragment {
 
     TextView nimProfil, namaProfil;
     private RecyclerView rvHistory;
-    private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolderHistory> firebaseRecyclerAdapter;
+    private FirebaseRecyclerAdapter<ModelBooked, EntryViewHolderHistory> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
     private static Query query;
     CircleImageView btnEdit;
@@ -70,7 +71,7 @@ public class FragmentProfile extends Fragment {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
 
-//        query = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("is_ac").equalTo(true);
+        query = FirebaseDatabase.getInstance().getReference("RuanganBooked").orderByChild("nim").equalTo(Preferences.getLoggedInNim(getContext()));
         rvHistory = view.findViewById(R.id.rv_history);
         rvHistory.setHasFixedSize(true);
         rvHistory.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -83,11 +84,11 @@ public class FragmentProfile extends Fragment {
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<ModelRuangan> options = new FirebaseRecyclerOptions.Builder<ModelRuangan>()
-                .setQuery(mDatabase, ModelRuangan.class)
+        FirebaseRecyclerOptions<ModelBooked> options = new FirebaseRecyclerOptions.Builder<ModelBooked>()
+                .setQuery(query, ModelBooked.class)
                 .build();
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolderHistory>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ModelBooked, EntryViewHolderHistory>(options) {
             @NonNull
             @Override
             public EntryViewHolderHistory onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -96,9 +97,9 @@ public class FragmentProfile extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull EntryViewHolderHistory entryViewHolder, int i, @NonNull ModelRuangan data) {
-                entryViewHolder.setTitle(data.getNama_ruang());
-                entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
+            protected void onBindViewHolder(@NonNull EntryViewHolderHistory entryViewHolder, int i, @NonNull ModelBooked data) {
+                entryViewHolder.setTitle(data.getId_ruang());
+                entryViewHolder.setKapasitas("Tanggal: "+data.getBulan_booked()+"- "+data.getTgl_booked()+"- "+data.getThn_booked());
             }
         };
 
