@@ -60,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
                             Toast.makeText(getBaseContext(),"Login Berhasil, Selamat datang :"+mhs_.getNama_mahasiswa(),Toast.LENGTH_LONG).show();
-                            Preferences.setLoggedInUser(getBaseContext(),mhs_.getNIM());
+                            Preferences.setLoggedInUser(getBaseContext(),mhs_.getNama_mahasiswa());
+                            Preferences.setLoggedInNim(getBaseContext(),mhs_.getNIM());
 
                             View sharedView = logoAmikom;
                             ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, sharedView, transitionName);

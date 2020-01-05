@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
+    android:background="@color/white"
     tools:context=".View.Fragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +62,7 @@
         android:layout_height="250dp"
         android:layout_marginTop="8dp"
         android:paddingBottom="8dp"
-        android:paddingHorizontal="4dp"
+        android:paddingHorizontal="3dp"
         android:background="@drawable/background_purple_rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

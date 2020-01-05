@@ -23,18 +23,21 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class FragmentListRuangan extends Fragment {
 
     private RecyclerView recyclerView;
     private RuanganAdapter ruanganAdapter;
     private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
+    private static Query query;
 
     public FragmentListRuangan() {
         // Required empty public constructor
@@ -54,6 +57,7 @@ public class FragmentListRuangan extends Fragment {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
 
+        query = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("is_ac").equalTo(true);
         recyclerView = view.findViewById(R.id.rv_fragment_ruangan);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

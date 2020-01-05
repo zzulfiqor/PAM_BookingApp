@@ -14,23 +14,10 @@
     </string>
     <string name="selamat_datang">Selamat datang</string>
     <string name="login_untuk_dapat_menggunakan_aplikasi_ini">Login untuk dapat menggunakan aplikasi ini</string>
-    <string name="login_error_click_here">Login Error ? Click here.</string>
     <string name="tap_disini_untuk_membuat_akun_baru">tap disini untuk membuat akun baru</string>
     <string name="halaman_registrasi">Halaman Registrasi</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="halo">Halo,</string>
 
-    <array name="gambar_ruangan">
-        <item>@drawable/cinema</item>
-        <item>@drawable/cinema</item>
-        <item>@drawable/cinema</item>
-    </array>
-
-    <string-array name="nama_ruangan">
-        <item>Cinema Amikom</item>
-        <item>Cinema Amikom</item>
-        <item>Cinema Amikom</item>
-    </string-array>
 </resources>
