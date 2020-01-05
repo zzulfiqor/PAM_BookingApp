@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
 import com.avenger.bookingyuk.Models.ModelRuangan;
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Activity.Description;
 import com.avenger.bookingyuk.View.Activity.ListRuangan;
@@ -85,13 +86,19 @@ public class FragmentListRuangan extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
+                final String idRuang = data.getId_ruang();
+
                 entryViewHolder.setTitle(data.getNama_ruang());
                 entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
+
+
 
                 entryViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Intent i = new Intent(getContext(), Description.class);
+                        Preferences.setNamaRuangDipilih(getContext(), idRuang);
                         startActivity(i);
                     }
                 });

@@ -7,14 +7,24 @@ public class ModelRuangan {
     private Boolean is_ac;
     private Boolean is_projector;
     private Integer kapasitas_ruang;
+    private String id_ruang;
 
-    public ModelRuangan(String nama_ruang, String catatan_ruangan, String foto_ruangan, Boolean is_ac, Boolean is_projector, Integer kapasitas_ruang) {
+    public String getId_ruang() {
+        return id_ruang;
+    }
+
+    public void setId_ruang(String id_ruang) {
+        this.id_ruang = id_ruang;
+    }
+
+    public ModelRuangan(String nama_ruang, String catatan_ruangan, String foto_ruangan, Boolean is_ac, Boolean is_projector, Integer kapasitas_ruang, String id_ruang) {
         this.nama_ruang = nama_ruang;
         this.catatan_ruangan = catatan_ruangan;
         this.foto_ruangan = foto_ruangan;
         this.is_ac = is_ac;
         this.is_projector = is_projector;
         this.kapasitas_ruang = kapasitas_ruang;
+        this.id_ruang = id_ruang;
     }
 
     public ModelRuangan() {

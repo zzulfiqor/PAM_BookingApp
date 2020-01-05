@@ -11,11 +11,27 @@ public class Preferences {
     static final String KEY_NIM_SEDANG_LOGIN = "Nim_logged_in";
     static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
     static final String KEY_ALAMAT_SEDANG_LOGIN = "Alamat_logged_in";
+    static final String KEY_NAMA_RUANG_DIPILIH = "Nama_ruang_dipilih";
+
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
+
+
+    /** Deklarasi Edit Preferences dan mengubah data */
+    public static void setNamaRuangDipilih(Context context, String username){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_NAMA_RUANG_DIPILIH, username);
+        editor.apply();
+    }
+
+    /** Mengembalikan nilai dari key KEY_NAMA_RUANG_DIPILIH berupa String */
+    public static String getNamaRuangDipilih(Context context){
+        return getSharedPreference(context).getString(KEY_NAMA_RUANG_DIPILIH,"");
+    }
+
 
     /** Deklarasi Edit Preferences dan mengubah data
      *  yang memiliki key KEY_ALAMAT_SEDANG_LOGIN dengan parameter username */
@@ -24,6 +40,7 @@ public class Preferences {
         editor.putString(KEY_ALAMAT_SEDANG_LOGIN, username);
         editor.apply();
     }
+
     /** Mengembalikan nilai dari key KEY_USERNAME_SEDANG_LOGIN berupa String */
     public static String getLoggedInAlamat(Context context){
         return getSharedPreference(context).getString(KEY_ALAMAT_SEDANG_LOGIN,"");
@@ -63,6 +80,12 @@ public class Preferences {
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
         editor.remove(KEY_NIM_SEDANG_LOGIN);
         editor.remove(KEY_ALAMAT_SEDANG_LOGIN);
+        editor.apply();
+    }
+
+    public static void clearRuangTerpilih (Context context){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.remove(KEY_NAMA_RUANG_DIPILIH);
         editor.apply();
     }
 }

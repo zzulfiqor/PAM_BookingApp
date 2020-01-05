@@ -73,6 +73,8 @@ public class LoginActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()){
                                     ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
+                                    Log.d("zhr",""+dataSnapshot.toString());
+                                    Log.d("zhr",""+mhs_.toString());
 
                                     if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
 
