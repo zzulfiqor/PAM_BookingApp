@@ -52,5 +52,9 @@ dependencies {
 //    material
     implementation 'com.google.android.material:material:1.0.0'
 
+//    timeline Calendar
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
+
+
 
 }

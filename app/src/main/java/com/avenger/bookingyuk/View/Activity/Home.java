@@ -64,6 +64,7 @@ public class Home extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 startActivity(new Intent(Home.this, LogoutWaitActivity.class));
+                                finish();
                             }
                         });
 
