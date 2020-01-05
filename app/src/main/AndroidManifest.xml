@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Activity.LogoutWaitActivity"></activity>
+        <activity android:name=".View.Activity.LoginBerhasilActivity"></activity>
+        <activity android:name=".View.Activity.LogoutWaitActivity" />
         <activity android:name=".View.Activity.finalstep" />
         <activity android:name=".View.Activity.success" />
         <activity android:name=".View.Activity.RegisterActivity" />

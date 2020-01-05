@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnLogin;
     EditText etEmail, etPassword;
-    TextView tvRegister;
+    TextView tvRegister, errorMsg;
     ModelMahasiswa mhs;
     ImageView logoAmikom;
     String transitionName = "logo_amikom";
@@ -45,6 +45,19 @@ public class LoginActivity extends AppCompatActivity {
 
         mhs = new ModelMahasiswa();
 
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
+
+        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,33 +65,40 @@ public class LoginActivity extends AppCompatActivity {
                 final String nim_mhs = etEmail.getText().toString();
                 final String pass_mhs = etPassword.getText().toString();
 
-                mhsRef.child(nim_mhs).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
+                if (nim_mhs == null || pass_mhs == null){
+                    showerrorMsg();
+                }else{
+                        mhsRef.child(nim_mhs).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()){
+                                    ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
 
+                                    if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
+                                        Preferences.setLoggedInUser(getBaseContext(),mhs_.getNama_mahasiswa());
+                                        Preferences.setLoggedInNim(getBaseContext(),mhs_.getNIM());
 
-                        if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
-                            Toast.makeText(getBaseContext(),"Login Berhasil, Selamat datang :"+mhs_.getNama_mahasiswa(),Toast.LENGTH_LONG).show();
-                            Preferences.setLoggedInUser(getBaseContext(),mhs_.getNama_mahasiswa());
-                            Preferences.setLoggedInNim(getBaseContext(),mhs_.getNIM());
+                                        View sharedView = logoAmikom;
+                                        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, sharedView, transitionName);
 
-                            View sharedView = logoAmikom;
-                            ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, sharedView, transitionName);
+                                        Intent intent = new Intent(LoginActivity.this, LoginBerhasilActivity.class);
+                                        startActivity(intent, transitionActivityOptions.toBundle());
+                                    }else{
+                                        showerrorMsg();
+                                    }
+                                }else{
+                                    showerrorMsg();
+                                }
 
-                            Intent intent = new Intent(LoginActivity.this, Home.class);
-                            startActivity(intent, transitionActivityOptions.toBundle());
-                        }else{
-                            Toast.makeText(getBaseContext(),"Login Gagal",Toast.LENGTH_LONG).show();
+                            }
 
-                        }
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Log.d("error_firebase_zhr",databaseError.getMessage());
+                            }
+                        });
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.d("error_firebase_zhr",databaseError.getMessage());
-                    }
-                });
+                }
             }
         });
 
@@ -93,12 +113,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void showerrorMsg() {
+        errorMsg.setVisibility(View.VISIBLE);
+    }
+
     void componentInit(){
         btnLogin = findViewById(R.id.btn_login);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         logoAmikom = findViewById(R.id.logoAmikom);
         tvRegister = findViewById(R.id.tv_register);
+        errorMsg = findViewById(R.id.error_messsage);
     }
 
 
