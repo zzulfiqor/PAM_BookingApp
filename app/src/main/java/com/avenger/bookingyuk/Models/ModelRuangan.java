@@ -6,9 +6,9 @@ public class ModelRuangan {
     private String foto_ruangan;
     private Boolean is_ac;
     private Boolean is_projector;
-    private String kapasitas_ruang;
+    private Integer kapasitas_ruang;
 
-    public ModelRuangan(String nama_ruang, String catatan_ruangan, String foto_ruangan, Boolean is_ac, Boolean is_projector, String kapasitas_ruang) {
+    public ModelRuangan(String nama_ruang, String catatan_ruangan, String foto_ruangan, Boolean is_ac, Boolean is_projector, Integer kapasitas_ruang) {
         this.nama_ruang = nama_ruang;
         this.catatan_ruangan = catatan_ruangan;
         this.foto_ruangan = foto_ruangan;
@@ -60,11 +60,11 @@ public class ModelRuangan {
         this.is_projector = is_projector;
     }
 
-    public String getKapasitas_ruang() {
+    public Integer getKapasitas_ruang() {
         return kapasitas_ruang;
     }
 
-    public void setKapasitas_ruang(String kapasitas_ruang) {
+    public void setKapasitas_ruang(Integer kapasitas_ruang) {
         this.kapasitas_ruang = kapasitas_ruang;
     }
 }

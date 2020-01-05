@@ -9,26 +9,22 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/checkbox"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:scaleType="centerCrop"
+        app:lottie_fileName="success.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Proses Peminjaman Ruangan"
+        android:text="Sukses meminjam ruangan."
         android:textAlignment="center"
-        android:paddingTop="20dp"
-        android:textSize="20dp"
-        android:textColor="@color/softblack"/>
+        android:layout_marginTop="16dp"
+        android:textSize="8pt"
+        android:textColor="@color/colorPrimaryDark"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SUKSES"
-        android:textAlignment="center"
-        android:paddingTop="20dp"
-        android:textSize="30dp"
-        android:textColor="@color/colorRed"/>
+
 </LinearLayout>
