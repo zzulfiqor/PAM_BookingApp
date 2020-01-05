@@ -10,10 +10,23 @@ public class Preferences {
     static final String KEY_USERNAME_SEDANG_LOGIN = "Username_logged_in";
     static final String KEY_NIM_SEDANG_LOGIN = "Nim_logged_in";
     static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
+    static final String KEY_ALAMAT_SEDANG_LOGIN = "Alamat_logged_in";
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    /** Deklarasi Edit Preferences dan mengubah data
+     *  yang memiliki key KEY_ALAMAT_SEDANG_LOGIN dengan parameter username */
+    public static void setLoggedInAlamat(Context context, String username){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_ALAMAT_SEDANG_LOGIN, username);
+        editor.apply();
+    }
+    /** Mengembalikan nilai dari key KEY_USERNAME_SEDANG_LOGIN berupa String */
+    public static String getLoggedInAlamat(Context context){
+        return getSharedPreference(context).getString(KEY_ALAMAT_SEDANG_LOGIN,"");
     }
 
 
@@ -49,6 +62,7 @@ public class Preferences {
         editor.remove(KEY_USERNAME_SEDANG_LOGIN);
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
         editor.remove(KEY_NIM_SEDANG_LOGIN);
+        editor.remove(KEY_ALAMAT_SEDANG_LOGIN);
         editor.apply();
     }
 }

@@ -39,7 +39,7 @@
                 android:layout_marginTop="13dp"
                 android:text="Nama ruangan"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp"
+                android:textSize="6pt"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/img_ruangan"
                 app:layout_constraintTop_toTopOf="@+id/img_ruangan" />
@@ -52,7 +52,7 @@
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="1dp"
                 android:text="1234"
-                android:textSize="5pt"
+                android:textSize="4pt"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@+id/nama_ruangan"
                 app:layout_constraintTop_toBottomOf="@+id/nama_ruangan" />

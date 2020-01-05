@@ -1,6 +1,7 @@
 package com.avenger.bookingyuk.View.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.R;
+import com.avenger.bookingyuk.View.Activity.Description;
 import com.avenger.bookingyuk.View.Activity.ListRuangan;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -85,6 +87,15 @@ public class FragmentListRuangan extends Fragment {
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setTitle(data.getNama_ruang());
                 entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
+
+                entryViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getContext(), Description.class);
+                        startActivity(i);
+                    }
+                });
+
             }
         };
 
@@ -106,6 +117,8 @@ public class FragmentListRuangan extends Fragment {
         public EntryViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+
+
         }
 
         public void setTitle(String title){
@@ -117,6 +130,7 @@ public class FragmentListRuangan extends Fragment {
             kapasitas_ruang = mView.findViewById(R.id.kapsitas_ruangan);
             kapasitas_ruang.setText(kapasitas);
         }
+
 
     }
 }

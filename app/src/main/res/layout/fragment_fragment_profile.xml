@@ -52,6 +52,18 @@
             app:layout_constraintStart_toStartOf="@+id/nama_profil"
             app:layout_constraintTop_toBottomOf="@+id/nama_profil" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/edit"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/nama_profil"
+            app:layout_constraintStart_toEndOf="@+id/nama_profil"
+            app:layout_constraintTop_toTopOf="@+id/nama_profil" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -66,6 +78,7 @@
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout6"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout6"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"

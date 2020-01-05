@@ -75,9 +75,10 @@ public class LoginActivity extends AppCompatActivity {
                                     ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
 
                                     if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
+
                                         Preferences.setLoggedInUser(getBaseContext(),mhs_.getNama_mahasiswa());
                                         Preferences.setLoggedInNim(getBaseContext(),mhs_.getNIM());
-
+                                        Preferences.setLoggedInAlamat(getBaseContext(),mhs_.getAlamat_mahasiswa());
                                         View sharedView = logoAmikom;
                                         ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, sharedView, transitionName);
 

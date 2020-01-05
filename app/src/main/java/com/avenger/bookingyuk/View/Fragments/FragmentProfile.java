@@ -1,6 +1,7 @@
 package com.avenger.bookingyuk.View.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,17 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
+import com.avenger.bookingyuk.View.Activity.EditProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -35,6 +40,8 @@ public class FragmentProfile extends Fragment {
     private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolderHistory> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
     private static Query query;
+    CircleImageView btnEdit;
+
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -52,6 +59,13 @@ public class FragmentProfile extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         componentInit(view);
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), EditProfileActivity.class));
+            }
+        });
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
@@ -123,6 +137,7 @@ public class FragmentProfile extends Fragment {
     void componentInit(View v){
         nimProfil = v.findViewById(R.id.nim_profil);
         namaProfil = v.findViewById(R.id.nama_profil);
+        btnEdit = v.findViewById(R.id.btn_edit);
     }
 
 }
