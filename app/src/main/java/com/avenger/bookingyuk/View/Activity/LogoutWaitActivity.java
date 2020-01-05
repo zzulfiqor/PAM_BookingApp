@@ -26,7 +26,7 @@ public class LogoutWaitActivity extends AppCompatActivity {
                 finish();
 
             }
-        },2100);
+        },3000);
 
     }
 }
