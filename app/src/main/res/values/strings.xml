@@ -21,4 +21,6 @@
     <string name="halo">Halo,</string>
     <string name="login_error">Login gagal, coba periksa kembali NIM / Password</string>
 
+    <!--FORM BOOKING-->
+    <string name="header_form">FORM PEMINJAMAN RUANGAN</string>
 </resources>
