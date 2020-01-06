@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:drawableStart="@drawable/ic_person_black_24dp"
-        android:hint="   ex: 17.11.1669"
+        android:hint="   ex: 17111669"
         app:layout_constraintEnd_toEndOf="parent"
         android:focusedByDefault="false"
         app:layout_constraintStart_toStartOf="@+id/textView7"
