@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".View.Fragments.FragmentProfile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,6 +88,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:listitem="@layout/item_ruangan" />
+        tools:listitem="@layout/item_ticket_booking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

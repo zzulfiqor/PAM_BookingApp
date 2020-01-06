@@ -55,5 +55,9 @@ dependencies {
 //    timeline Calendar
     implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
 
+//    ticket view
+    implementation 'com.vipulasri:ticketview:1.0.7'
+
+
 
 }

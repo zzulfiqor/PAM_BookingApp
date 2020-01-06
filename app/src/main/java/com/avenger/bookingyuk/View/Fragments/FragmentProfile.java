@@ -23,6 +23,7 @@ import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
+import com.avenger.bookingyuk.TicketDetail;
 import com.avenger.bookingyuk.View.Activity.EditProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -102,7 +103,7 @@ public class FragmentProfile extends Fragment {
             @NonNull
             @Override
             public EntryViewHolderHistory onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ruangan, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ticket_booking, parent, false);
                 return new EntryViewHolderHistory(view);
             }
 
@@ -120,7 +121,7 @@ public class FragmentProfile extends Fragment {
                             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                                 ModelRuangan ruang__ = dataSnapshot.getValue(ModelRuangan.class);
                                 if (ruang_.getId_ruang().equals(ruang__.getId_ruang())){
-                                    entryViewHolder.setTitle(ruang__.getNama_ruang());
+                                    entryViewHolder.setNamaRuang(ruang__.getNama_ruang());
                                 }else{
 
                                 }
@@ -156,7 +157,17 @@ public class FragmentProfile extends Fragment {
                     }
                 });
 
-                entryViewHolder.setKapasitas("Tanggal: "+data.getTgl_booked()+"-"+data.getBulan_booked()+"-"+data.getThn_booked());
+                entryViewHolder.setTanggalTiket("Tanggal: "+data.getTgl_booked()+"-"+data.getBulan_booked()+"-"+data.getThn_booked());
+                entryViewHolder.setOrganisasiTiket(data.getOrganisasi_booked());
+                entryViewHolder.setAcaraTiket(data.getAcara_booked());
+
+
+                entryViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getContext(), TicketDetail.class));
+                    }
+                });
             }
         };
 
@@ -172,22 +183,31 @@ public class FragmentProfile extends Fragment {
 
     public static class EntryViewHolderHistory extends RecyclerView.ViewHolder {
         View mView;
-        TextView tes;
-        TextView kapasitas_ruang;
+        TextView nama_ruang_tiket, tanggal_tiket, organisasi_tiket, acara_tiket;
 
         public EntryViewHolderHistory(View itemView) {
             super(itemView);
             mView = itemView;
         }
 
-        public void setTitle(String title){
-            tes = mView.findViewById(R.id.nama_ruangan);
-            tes.setText(title);
+        public void setNamaRuang (String nama){
+            nama_ruang_tiket = mView.findViewById(R.id.ruangan_ticket);
+            nama_ruang_tiket.setText(nama);
         }
 
-        public void setKapasitas(String kapasitas){
-            kapasitas_ruang = mView.findViewById(R.id.kapsitas_ruangan);
-            kapasitas_ruang.setText(kapasitas);
+        public void setTanggalTiket(String tanggalTiket){
+            tanggal_tiket = mView.findViewById(R.id.tgl_ticket);
+            tanggal_tiket.setText(tanggalTiket);
+        }
+
+        public void setOrganisasiTiket(String organisasiTiket){
+            organisasi_tiket = mView.findViewById(R.id.organisasi_ticket);
+            organisasi_tiket.setText(organisasiTiket);
+        }
+
+        public void setAcaraTiket(String acaraTiket){
+            acara_tiket = mView.findViewById(R.id.acara_tiket);
+            acara_tiket.setText(acaraTiket);
         }
 
     }
