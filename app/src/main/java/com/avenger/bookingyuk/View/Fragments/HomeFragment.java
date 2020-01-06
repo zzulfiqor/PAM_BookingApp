@@ -1,6 +1,7 @@
 package com.avenger.bookingyuk.View.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Models.ModelTes;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
+import com.avenger.bookingyuk.View.Activity.Description;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -101,6 +103,18 @@ public class HomeFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setTitle(data.getNama_ruang());
+                final String idRuang = data.getId_ruang();
+                final String namaRuang = data.getNama_ruang();
+
+                entryViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getContext(), Description.class);
+                        Preferences.setNamaRuangDipilih(getContext(), idRuang);
+                        Preferences.setNamaRuangRealDipilih(getContext(), namaRuang);
+                        startActivity(i);
+                    }
+                });
             }
         };
 
@@ -116,6 +130,18 @@ public class HomeFragment extends Fragment {
             protected void onBindViewHolder(@NonNull EntryViewHolder2 entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setNama(data.getNama_ruang());
                 entryViewHolder.setKapasitas(data.getKapasitas_ruang()+" Kapasitas");
+                final String idRuang = data.getId_ruang();
+                final String namaRuang = data.getNama_ruang();
+
+                entryViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getContext(), Description.class);
+                        Preferences.setNamaRuangDipilih(getContext(), idRuang);
+                        Preferences.setNamaRuangRealDipilih(getContext(), namaRuang);
+                        startActivity(i);
+                    }
+                });
             }
         };
 

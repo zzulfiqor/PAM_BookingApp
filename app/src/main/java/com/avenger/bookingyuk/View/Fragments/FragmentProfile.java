@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +19,20 @@ import android.widget.TextView;
 
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
 import com.avenger.bookingyuk.Models.ModelBooked;
+import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Activity.EditProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,8 +46,9 @@ public class FragmentProfile extends Fragment {
     private RecyclerView rvHistory;
     private FirebaseRecyclerAdapter<ModelBooked, EntryViewHolderHistory> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
-    private static Query query;
+    private static Query query,q2;
     CircleImageView btnEdit;
+    String ruangNama;
 
 
     public FragmentProfile() {
@@ -68,16 +75,19 @@ public class FragmentProfile extends Fragment {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("RuanganBooked");
         mDatabase.keepSynced(true);
 
         query = FirebaseDatabase.getInstance().getReference("RuanganBooked").orderByChild("nim").equalTo(Preferences.getLoggedInNim(getContext()));
+
         rvHistory = view.findViewById(R.id.rv_history);
         rvHistory.setHasFixedSize(true);
         rvHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
         namaProfil.setText(Preferences.getLoggedInUser(getContext()));
         nimProfil.setText(Preferences.getLoggedInNim(getContext()));
+
+
     }
 
     @Override
@@ -97,9 +107,56 @@ public class FragmentProfile extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull EntryViewHolderHistory entryViewHolder, int i, @NonNull ModelBooked data) {
-                entryViewHolder.setTitle(data.getId_ruang());
-                entryViewHolder.setKapasitas("Tanggal: "+data.getBulan_booked()+"- "+data.getTgl_booked()+"- "+data.getThn_booked());
+            protected void onBindViewHolder(@NonNull final EntryViewHolderHistory entryViewHolder, int i, @NonNull final ModelBooked data) {
+
+                mDatabase.child(data.getId_book()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        final ModelRuangan ruang_ = dataSnapshot.getValue(ModelRuangan.class);
+
+                        q2 = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("id_ruang").equalTo(ruang_.getId_ruang());
+                        q2.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                ModelRuangan ruang__ = dataSnapshot.getValue(ModelRuangan.class);
+                                if (ruang_.getId_ruang().equals(ruang__.getId_ruang())){
+                                    entryViewHolder.setTitle(ruang__.getNama_ruang());
+                                }else{
+
+                                }
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                entryViewHolder.setKapasitas("Tanggal: "+data.getTgl_booked()+"-"+data.getBulan_booked()+"-"+data.getThn_booked());
             }
         };
 
