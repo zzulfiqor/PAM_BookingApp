@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avenger.bookingyuk.Models.ModelRuangan;
@@ -20,6 +21,7 @@ import com.avenger.bookingyuk.Models.ModelTes;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Activity.Description;
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -103,6 +105,8 @@ public class HomeFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setTitle(data.getNama_ruang());
+                entryViewHolder.setPhoto(data.getFoto_ruangan());
+
                 final String idRuang = data.getId_ruang();
                 final String namaRuang = data.getNama_ruang();
 
@@ -130,6 +134,7 @@ public class HomeFragment extends Fragment {
             protected void onBindViewHolder(@NonNull EntryViewHolder2 entryViewHolder, int i, @NonNull ModelRuangan data) {
                 entryViewHolder.setNama(data.getNama_ruang());
                 entryViewHolder.setKapasitas(data.getKapasitas_ruang()+" Kapasitas");
+                entryViewHolder.setPhoto(data.getFoto_ruangan());
                 final String idRuang = data.getId_ruang();
                 final String namaRuang = data.getNama_ruang();
 
@@ -162,6 +167,8 @@ public class HomeFragment extends Fragment {
     public static class EntryViewHolder extends RecyclerView.ViewHolder {
         View mView;
         TextView tes;
+        ImageView ivRuangan;
+
         public EntryViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
@@ -171,12 +178,22 @@ public class HomeFragment extends Fragment {
             tes.setText(title);
         }
 
+        public void setPhoto(String url){
+            ivRuangan = mView.findViewById(R.id.imageView4);
+            Glide.with(mView.getContext())
+                    .load(url)
+                    .centerCrop()
+                    .into(ivRuangan);
+        }
+
 
     }
 
     public static class EntryViewHolder2 extends RecyclerView.ViewHolder {
         View mView;
         TextView kapasitas, nama;
+        ImageView ivRuangan;
+
         public EntryViewHolder2(View itemView) {
             super(itemView);
             mView = itemView;
@@ -189,6 +206,14 @@ public class HomeFragment extends Fragment {
         public void setKapasitas(String title){
             kapasitas = (TextView) mView.findViewById(R.id.kapsitas_ruang_semnas);
             kapasitas.setText(title);
+        }
+
+        public void setPhoto(String url){
+            ivRuangan = mView.findViewById(R.id.image_ruang_semnas);
+            Glide.with(mView.getContext())
+                    .load(url)
+                    .centerCrop()
+                    .into(ivRuangan);
         }
 
 

@@ -14,16 +14,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.avenger.bookingyuk.Adapter.RuanganAdapter;
 import com.avenger.bookingyuk.Models.ModelBooked;
-import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.Models.ModelRuangan;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
-import com.avenger.bookingyuk.TicketDetail;
+import com.avenger.bookingyuk.View.Activity.TicketDetail;
 import com.avenger.bookingyuk.View.Activity.EditProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -50,6 +47,7 @@ public class FragmentProfile extends Fragment {
     private static Query query,q2;
     CircleImageView btnEdit;
     String ruangNama;
+    String idRuang;
 
 
     public FragmentProfile() {
@@ -110,62 +108,22 @@ public class FragmentProfile extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final EntryViewHolderHistory entryViewHolder, int i, @NonNull final ModelBooked data) {
 
-                mDatabase.child(data.getId_book()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        final ModelRuangan ruang_ = dataSnapshot.getValue(ModelRuangan.class);
-
-                        q2 = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("id_ruang").equalTo(ruang_.getId_ruang());
-                        q2.addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                                ModelRuangan ruang__ = dataSnapshot.getValue(ModelRuangan.class);
-                                if (ruang_.getId_ruang().equals(ruang__.getId_ruang())){
-                                    entryViewHolder.setNamaRuang(ruang__.getNama_ruang());
-                                }else{
-
-                                }
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
                 entryViewHolder.setTanggalTiket("Tanggal: "+data.getTgl_booked()+"-"+data.getBulan_booked()+"-"+data.getThn_booked());
                 entryViewHolder.setOrganisasiTiket(data.getOrganisasi_booked());
                 entryViewHolder.setAcaraTiket(data.getAcara_booked());
-
+                entryViewHolder.setNamaRuang(data.getNama_ruang());
 
                 entryViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(getContext(), TicketDetail.class));
+                        Intent i = new Intent(getContext(), TicketDetail.class);
+
+                        Log.d("zhr",ruangNama+" sip");
+                        i.putExtra("zhr_nama_ruang", data.getNama_ruang());
+                        i.putExtra("zhr_id_ruang",data.getId_book());
+                        i.putExtra("zhr_parcel",data);
+                        startActivity(i);
+
                     }
                 });
             }

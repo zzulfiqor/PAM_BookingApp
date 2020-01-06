@@ -13,12 +13,29 @@ public class Preferences {
     static final String KEY_ALAMAT_SEDANG_LOGIN = "Alamat_logged_in";
     static final String KEY_NAMA_RUANG_DIPILIH = "Nama_ruang_dipilih";
     static final String KEY_NAMA_REAL_RUANGAN_DIPILIH = "Nama_real_ruangan_dipilih";
+    static final String STATUS = "status_state";
 
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
+
+
+
+    /** Deklarasi Edit Preferences dan mengubah data */
+    public static void setStatus(Context context, String username){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(STATUS, username);
+        editor.apply();
+    }
+
+    /** Mengembalikan nilai dari key KEY_NAMA_RUANG_DIPILIH berupa String */
+    public static String getStatus(Context context){
+        return getSharedPreference(context).getString(STATUS,"");
+    }
+
+
 
 
     /** Deklarasi Edit Preferences dan mengubah data */

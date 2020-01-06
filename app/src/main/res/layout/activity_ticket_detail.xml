@@ -7,7 +7,7 @@
     android:background="@color/colorPrimaryDark"
     android:paddingHorizontal="20dp"
     android:paddingVertical="50dp"
-    tools:context=".TicketDetail">
+    tools:context=".View.Activity.TicketDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout8"
@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="70dp" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/qrCode"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
@@ -35,9 +35,9 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8pt"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintEnd_toEndOf="@+id/qrCode"
+        app:layout_constraintStart_toStartOf="@+id/qrCode"
+        app:layout_constraintTop_toBottomOf="@+id/qrCode" />
 
     <View
         android:id="@+id/view5"
@@ -168,6 +168,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView252" />
 
     <Button
+        android:id="@+id/btnBatal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

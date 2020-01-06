@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Fragments.FragmentListRuangan;
 import com.avenger.bookingyuk.View.Fragments.FragmentProfile;
@@ -34,6 +35,7 @@ public class Home extends AppCompatActivity {
                 case R.id.menu_home:
                     selectedFragment = new HomeFragment(); break;
                 case R.id.menu_profile:
+                    Preferences.setStatus(getBaseContext(),"ok");
                     selectedFragment = new FragmentProfile();break;
             }
 

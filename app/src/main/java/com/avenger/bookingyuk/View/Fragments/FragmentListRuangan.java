@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avenger.bookingyuk.Adapter.RuanganAdapter;
@@ -22,6 +23,7 @@ import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Activity.Description;
 import com.avenger.bookingyuk.View.Activity.ListRuangan;
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -91,7 +93,7 @@ public class FragmentListRuangan extends Fragment {
 
                 entryViewHolder.setTitle(data.getNama_ruang());
                 entryViewHolder.setKapasitas("Kapasitas: "+data.getKapasitas_ruang());
-
+                entryViewHolder.setPhoto(data.getFoto_ruangan());
 
 
                 entryViewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +124,7 @@ public class FragmentListRuangan extends Fragment {
         View mView;
         TextView tes;
         TextView kapasitas_ruang;
+        ImageView ivRuangan;
 
         public EntryViewHolder(View itemView) {
             super(itemView);
@@ -138,6 +141,14 @@ public class FragmentListRuangan extends Fragment {
         public void setKapasitas(String kapasitas){
             kapasitas_ruang = mView.findViewById(R.id.kapsitas_ruangan);
             kapasitas_ruang.setText(kapasitas);
+        }
+
+        public void setPhoto(String url){
+            ivRuangan = mView.findViewById(R.id.img_ruangan);
+            Glide.with(mView.getContext())
+                    .load(url)
+                    .centerCrop()
+                    .into(ivRuangan);
         }
 
 
