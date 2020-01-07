@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FragmentProfile extends Fragment {
 
     TextView nimProfil, namaProfil;
+    ConstraintLayout emptyView;
     private RecyclerView rvHistory;
     private FirebaseRecyclerAdapter<ModelBooked, EntryViewHolderHistory> firebaseRecyclerAdapter;
     private static DatabaseReference mDatabase;
@@ -98,6 +100,18 @@ public class FragmentProfile extends Fragment {
                 .build();
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ModelBooked, EntryViewHolderHistory>(options) {
+
+            @Override
+            public void onDataChanged() {
+                if (getItemCount() == 0) {
+                    rvHistory.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    rvHistory.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+                }
+            }
+
             @NonNull
             @Override
             public EntryViewHolderHistory onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -107,7 +121,7 @@ public class FragmentProfile extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull final EntryViewHolderHistory entryViewHolder, int i, @NonNull final ModelBooked data) {
-
+                Log.d("zhr","Cek data didalam: "+data.getId_book());
                 entryViewHolder.setTanggalTiket("Tanggal: "+data.getTgl_booked()+"-"+data.getBulan_booked()+"-"+data.getThn_booked());
                 entryViewHolder.setOrganisasiTiket(data.getOrganisasi_booked());
                 entryViewHolder.setAcaraTiket(data.getAcara_booked());
@@ -174,6 +188,7 @@ public class FragmentProfile extends Fragment {
         nimProfil = v.findViewById(R.id.nim_profil);
         namaProfil = v.findViewById(R.id.nama_profil);
         btnEdit = v.findViewById(R.id.btn_edit);
+        emptyView = v.findViewById(R.id.empty_state_view);
     }
 
 }

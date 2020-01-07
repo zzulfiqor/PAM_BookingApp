@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avenger.bookingyuk.Models.ModelBooked;
 import com.avenger.bookingyuk.Preferences.Preferences;
@@ -32,6 +33,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import es.dmoral.toasty.Toasty;
 
 public class FormBookingActivity extends AppCompatActivity {
 
@@ -117,7 +120,7 @@ public class FormBookingActivity extends AppCompatActivity {
 
             @Override
             public void onDisabledDateSelected(int year, int month, int day, int dayOfWeek, boolean isDisabled) {
-
+                Toasty.error(getBaseContext(), "Sudah ada yang meminjam di tanggal ini.", Toast.LENGTH_SHORT, true).show();
             }
         });
 

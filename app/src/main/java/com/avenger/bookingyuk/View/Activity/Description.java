@@ -83,6 +83,11 @@ public class Description extends AppCompatActivity {
                     }
                     tvKapasitas.setText(ruang_.getKapasitas_ruang().toString()+" Orang");
                     tvCatatan.setText(ruang_.getCatatan_ruangan());
+
+                    Glide.with(getBaseContext())
+                            .load(ruang_.getFoto_ruangan())
+                            .centerCrop()
+                            .into(imgruangan);
                 }else{
 
                 }
@@ -102,6 +107,7 @@ public class Description extends AppCompatActivity {
         tvProyektor = findViewById(R.id.ada_proyektor_desc);
         tvCatatan = findViewById(R.id.ruang_catatan_desc);
         btnPinjam = findViewById(R.id.btn_pinjam);
+        imgruangan = findViewById(R.id.toolbarImage);
     }
 
 }

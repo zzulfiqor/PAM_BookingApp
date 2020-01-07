@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:src="@drawable/ticket"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,6 +79,14 @@
             app:layout_constraintTop_toBottomOf="@+id/organisasi_ticket" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/softblack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

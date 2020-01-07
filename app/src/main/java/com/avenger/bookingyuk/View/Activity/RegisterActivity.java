@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegisterActivity extends AppCompatActivity {
 
     TextInputEditText etNIM,etNama,etAlamat, etPassword;
@@ -42,15 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = etPassword.getText().toString();
                 String nim = etNIM.getText().toString();
                 if (nim.isEmpty()){
-                    Toast.makeText(getBaseContext(), "NIM Harus Diisi",Toast.LENGTH_SHORT).show();
+                    Toasty.error(getBaseContext(), "NIM tidak boleh kosong",Toast.LENGTH_SHORT,true).show();
                     return;
                 } else {
                     mhs.setNIM(etNIM.getText().toString());
                 }
                 mhs.setNama_mahasiswa(etNama.getText().toString());
                 mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
-                if (TextUtils.isEmpty(pass)||pass.length()<8) {
-                    Toast.makeText(getBaseContext(), "Damn Your Password is to short !!",Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(pass)||pass.length()<6) {
+                    Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
                     return;
                 } else {
                     mhs.setPassword_mahasiswa(pass);
@@ -58,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 mhsRef.child(mhs.getNIM()).setValue(mhs);
 
-                Toast.makeText(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG).show();
+                Toasty.success(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG,true).show();
 
                 Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(i);

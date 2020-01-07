@@ -109,6 +109,7 @@ public class TicketDetail extends AppCompatActivity {
                                 }
                                 Preferences.setStatus(getBaseContext(),"notOk");
                                 startActivity(new Intent(getBaseContext(), DeleteSuccesActivity.class));
+                                finish();
                             }
 
                             @Override

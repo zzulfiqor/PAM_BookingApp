@@ -36,12 +36,14 @@ public class HomeFragment extends Fragment {
 
     TextView namaHome;
 
-    RecyclerView rvTersedia, rvSemnas;
+    RecyclerView rvTersedia, rvSemnas, rvRapat;
     private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder> firebaseRecyclerAdapter;
     private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder2> firebaseRecyclerAdapter2;
+    private FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder2> firebaseRecyclerAdapter3;
+
 
     private static DatabaseReference mDatabase;
-    private Query mQueryCurrent;
+    private Query mQueryCurrent,rapatQuery;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -62,30 +64,49 @@ public class HomeFragment extends Fragment {
         namaHome = view.findViewById(R.id.nama_home);
         namaHome.setText(Preferences.getLoggedInUser(getContext()));
 
-        mQueryCurrent = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("kapasitas_ruang").startAt(300);
+        mQueryCurrent = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("kapasitas_ruang").startAt(299);
+        rapatQuery = FirebaseDatabase.getInstance().getReference("Ruang").orderByChild("kapasitas_ruang").endAt(200);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ruang");
         mDatabase.keepSynced(true);
 
+//        =======================================================================================================
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
         LinearLayoutManager layoutManager2
                 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
+        LinearLayoutManager layoutManager3
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//        =======================================================================================================
+
+
+//        =======================================================================================================
         rvTersedia = view.findViewById(R.id.rv_ruang_tersedia);
         rvTersedia.setHasFixedSize(true);
         rvTersedia.setLayoutManager(layoutManager);
+//        =======================================================================================================
 
+
+//        =======================================================================================================
         rvSemnas = view.findViewById(R.id.rv_ruang_lebih_dari_100);
         rvSemnas.setHasFixedSize(true);
         rvSemnas.setLayoutManager(layoutManager2);
+//        =======================================================================================================
+
+//        =======================================================================================================
+        rvRapat = view.findViewById(R.id.rv_ruang_rapat);
+        rvRapat.setHasFixedSize(true);
+        rvRapat.setLayoutManager(layoutManager3);
+//        =======================================================================================================
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
+//        ===========================================================================================================
         FirebaseRecyclerOptions<ModelRuangan> options = new FirebaseRecyclerOptions.Builder<ModelRuangan>()
                 .setQuery(mDatabase, ModelRuangan.class)
                 .build();
@@ -93,6 +114,12 @@ public class HomeFragment extends Fragment {
         FirebaseRecyclerOptions<ModelRuangan> options2 = new FirebaseRecyclerOptions.Builder<ModelRuangan>()
                 .setQuery(mQueryCurrent, ModelRuangan.class)
                 .build();
+
+        FirebaseRecyclerOptions<ModelRuangan> options3 = new FirebaseRecyclerOptions.Builder<ModelRuangan>()
+                .setQuery(rapatQuery, ModelRuangan.class)
+                .build();
+//        ===========================================================================================================
+//        Ini adapter recycler view Utama
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder>(options) {
             @NonNull
@@ -121,6 +148,8 @@ public class HomeFragment extends Fragment {
                 });
             }
         };
+//        =============================================================================================================
+//        Ini adapter recycler view semnas
 
         firebaseRecyclerAdapter2 = new FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder2>(options2) {
             @NonNull
@@ -149,17 +178,53 @@ public class HomeFragment extends Fragment {
                 });
             }
         };
+//        ===============================================================================================================
+//        Ini adapter recycler view rapat
+
+        firebaseRecyclerAdapter3 = new FirebaseRecyclerAdapter<ModelRuangan, EntryViewHolder2>(options3) {
+            @NonNull
+            @Override
+            public EntryViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ruangan_semnas, parent, false);
+                return new EntryViewHolder2(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull EntryViewHolder2 entryViewHolder, int i, @NonNull ModelRuangan data) {
+                entryViewHolder.setNama(data.getNama_ruang());
+                entryViewHolder.setKapasitas(data.getKapasitas_ruang()+" Kapasitas");
+                entryViewHolder.setPhoto(data.getFoto_ruangan());
+                final String idRuang = data.getId_ruang();
+                final String namaRuang = data.getNama_ruang();
+
+                entryViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getContext(), Description.class);
+                        Preferences.setNamaRuangDipilih(getContext(), idRuang);
+                        Preferences.setNamaRuangRealDipilih(getContext(), namaRuang);
+                        startActivity(i);
+                    }
+                });
+            }
+        };
+
+//        ===============================================================================================================
 
         rvTersedia.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
 
         rvSemnas.setAdapter(firebaseRecyclerAdapter2);
         firebaseRecyclerAdapter2.startListening();
+
+        rvRapat.setAdapter(firebaseRecyclerAdapter3);
+        firebaseRecyclerAdapter3.startListening();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        firebaseRecyclerAdapter3.stopListening();
         firebaseRecyclerAdapter2.stopListening();
         firebaseRecyclerAdapter.stopListening();
     }

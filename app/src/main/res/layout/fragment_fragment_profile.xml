@@ -4,46 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingHorizontal="8dp"
     tools:context=".View.Fragments.FragmentProfile">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="120dp"
         android:background="@drawable/background_profile_rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_profil"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/saya"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="2dp"
+        <TextView
+            android:id="@+id/nama_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Ahmad Zuhair Dzulfiqor"
+            android:textColor="@color/white"
+            android:textSize="8pt"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/nama_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Ahmad Zuhair Dzulfiqor"
-            android:textColor="@color/white"
-            android:textSize="8pt"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/iv_profil"
-            app:layout_constraintStart_toStartOf="@+id/iv_profil"
-            app:layout_constraintTop_toBottomOf="@+id/iv_profil" />
-
-        <TextView
             android:id="@+id/nim_profil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="17.11.1669"
             android:textColor="@color/white"
             android:textSize="7pt"
@@ -70,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Tiket Booking"
+        android:text="Tiket Peminjaman"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8pt"
         android:textStyle="bold"
@@ -89,5 +80,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         tools:listitem="@layout/item_ticket_booking" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/empty_state_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:layout_editor_absoluteX="8dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.386"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="empty.json" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Anda belum menyewa ruangan"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView3"
+            app:layout_constraintStart_toStartOf="@+id/lottieAnimationView3"
+            app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

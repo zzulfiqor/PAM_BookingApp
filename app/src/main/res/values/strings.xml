@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Booking Yuk</string>
+    <string name="app_name">Amikom Booking App</string>
 
     <string name="onboard1">
         Cara terbaru untuk meminjam ruangan
@@ -18,9 +18,7 @@
     <string name="halaman_registrasi">Halaman Registrasi</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="halo">Halo,</string>
     <string name="login_error">Login gagal, coba periksa kembali NIM / Password</string>
 
     <!--FORM BOOKING-->
-    <string name="header_form">FORM PEMINJAMAN RUANGAN</string>
 </resources>

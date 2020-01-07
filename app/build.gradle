@@ -61,4 +61,7 @@ dependencies {
 // qr code
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 
+//    Toasty
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
+
 }

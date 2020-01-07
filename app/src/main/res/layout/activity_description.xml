@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Pesan Ruang"
+        android:text="Pinjam Ruang"
         android:background="@drawable/background_purple_rounded"
         android:textColor="@color/white"
         android:textAllCaps="false"

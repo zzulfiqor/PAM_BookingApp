@@ -19,10 +19,6 @@ public class SuccessBookActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                //setelah loading maka akan langsung berpindah ke home activity
-                Intent home = new Intent(getBaseContext(), Home.class);
-                startActivity(home);
                 finish();
 
             }

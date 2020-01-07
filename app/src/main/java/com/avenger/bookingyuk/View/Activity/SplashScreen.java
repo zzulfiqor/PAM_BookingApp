@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class SplashScreen extends AppCompatActivity {
-
+    Intent home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,12 @@ public class SplashScreen extends AppCompatActivity {
                 Date[] dates = {Calendar.getInstance().getTime(),Calendar.getInstance().getTime()};
                 Log.d("zhr",""+dates[0]);
 
-                Intent home = new Intent(getBaseContext(), OnBoardingActivity.class);
+                if (Preferences.getStatus(getBaseContext()).equals("ok")){
+                    home = new Intent(getBaseContext(), LoginActivity.class);
+                }else{
+                    home = new Intent(getBaseContext(), OnBoardingActivity.class);
+                }
+
                 startActivity(home);
                 finish();
 

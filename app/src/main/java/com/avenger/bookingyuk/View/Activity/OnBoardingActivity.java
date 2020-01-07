@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.avenger.bookingyuk.Adapter.OnBoardingPagerAdapter;
+import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 
 public class OnBoardingActivity extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class OnBoardingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(i);
+                Preferences.setStatus(getBaseContext(),"ok");
             }
         });
 
