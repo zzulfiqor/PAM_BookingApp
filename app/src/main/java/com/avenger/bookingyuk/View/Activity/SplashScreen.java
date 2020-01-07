@@ -29,7 +29,12 @@ public class SplashScreen extends AppCompatActivity {
                 Log.d("zhr",""+dates[0]);
 
                 if (Preferences.getStatus(getBaseContext()).equals("ok")){
-                    home = new Intent(getBaseContext(), LoginActivity.class);
+
+                    if (Preferences.getLoggedInUser(getBaseContext()).isEmpty()){
+                        home = new Intent(getBaseContext(), LoginActivity.class);
+                    }else {
+                        home = new Intent(getBaseContext(), Home.class);
+                    }
                 }else{
                     home = new Intent(getBaseContext(), OnBoardingActivity.class);
                 }
