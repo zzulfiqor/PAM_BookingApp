@@ -31,11 +31,8 @@
         <activity android:name=".View.Activity.OnBoardingActivity" />
         <activity android:name=".View.Activity.LoginActivity" />
         <activity android:name=".View.Activity.Description" />
-        <activity android:name=".View.Activity.Profile" />
         <activity android:name=".View.Activity.Home" />
         <activity android:name=".View.Activity.ListRuangan" />
-        <activity android:name=".View.Activity.SecondActivity" />
-        <activity android:name=".View.Activity.MainActivity" />
         <activity android:name=".View.Activity.PesananFinal" />
     </application>
 
