@@ -60,9 +60,6 @@ public class Description extends AppCompatActivity {
         ruangRef.child(idRuang).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                Log.d("zhr",""+dataSnapshot.getValue());
-
                 ModelRuangan ruang_ = dataSnapshot.getValue(ModelRuangan.class);
 
                 if (idRuang.equals(ruang_.getId_ruang())){

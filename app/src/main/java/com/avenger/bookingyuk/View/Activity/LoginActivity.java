@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avenger.bookingyuk.AESChiper.AESUtils;
 import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
@@ -73,10 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()){
                                     ModelMahasiswa mhs_ = dataSnapshot.getValue(ModelMahasiswa.class);
-                                    Log.d("zhr",""+dataSnapshot.toString());
-                                    Log.d("zhr",""+mhs_.toString());
 
-                                    if (pass_mhs.equals(mhs_.getPassword_mahasiswa())){
+
+                                    if (pass_mhs.equals(decryptPassword(mhs_.getPassword_mahasiswa()))){
 
                                         Preferences.setLoggedInUser(getBaseContext(),mhs_.getNama_mahasiswa());
                                         Preferences.setLoggedInNim(getBaseContext(),mhs_.getNIM());
@@ -97,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-                                Log.d("error_firebase_zhr",databaseError.getMessage());
                             }
                         });
 
@@ -129,5 +128,15 @@ public class LoginActivity extends AppCompatActivity {
         errorMsg = findViewById(R.id.error_messsage);
     }
 
+    String decryptPassword(String encrypted){
+        String decrypted = "";
+        try {
+            decrypted = AESUtils.decrypt(encrypted);
+            return decrypted;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

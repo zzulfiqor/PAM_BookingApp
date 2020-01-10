@@ -18,4 +18,10 @@
         android:icon="@drawable/icon8_profile"
         />
 
+    <item
+        android:id="@+id/menu_info"
+        android:title="Info"
+        android:icon="@drawable/info"
+        />
+
 </menu>

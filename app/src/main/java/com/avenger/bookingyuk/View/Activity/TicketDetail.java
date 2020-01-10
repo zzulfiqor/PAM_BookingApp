@@ -73,10 +73,8 @@ public class TicketDetail extends AppCompatActivity {
         try {
             bitmap = qrgEncoder.encodeAsBitmap();
             qrCode.setImageBitmap(bitmap);
-            Log.d("zhr","Jalan Woy");
 
         } catch (Exception e) {
-            Log.d("zhr","Error woy");
             e.printStackTrace();
         }
         tvId.setText("#"+idBooking);

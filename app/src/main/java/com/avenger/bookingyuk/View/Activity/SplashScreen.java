@@ -26,7 +26,6 @@ public class SplashScreen extends AppCompatActivity {
 
                 //setelah loading maka akan langsung berpindah ke home activity
                 Date[] dates = {Calendar.getInstance().getTime(),Calendar.getInstance().getTime()};
-                Log.d("zhr",""+dates[0]);
 
                 if (Preferences.getStatus(getBaseContext()).equals("ok")){
 

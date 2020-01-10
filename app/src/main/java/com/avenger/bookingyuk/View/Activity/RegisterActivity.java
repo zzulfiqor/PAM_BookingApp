@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.avenger.bookingyuk.AESChiper.AESUtils;
 import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -55,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
                     return;
                 } else {
-                    mhs.setPassword_mahasiswa(pass);
+                    mhs.setPassword_mahasiswa(EncryptPassword(pass));
                 }
 
                 mhsRef.child(mhs.getNIM()).setValue(mhs);
@@ -76,5 +78,16 @@ public class RegisterActivity extends AppCompatActivity {
         etAlamat = findViewById(R.id.et_alamat_register_);
         etPassword = findViewById(R.id.et_password_register_);
         btnRegister = findViewById(R.id.btn_register);
+    }
+
+    String EncryptPassword(String sourceStr){
+        String encrypted = "";
+        try {
+            encrypted = AESUtils.encrypt(sourceStr);
+            return encrypted;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

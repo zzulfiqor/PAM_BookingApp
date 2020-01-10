@@ -18,6 +18,7 @@ import com.avenger.bookingyuk.R;
 import com.avenger.bookingyuk.View.Fragments.FragmentListRuangan;
 import com.avenger.bookingyuk.View.Fragments.FragmentProfile;
 import com.avenger.bookingyuk.View.Fragments.HomeFragment;
+import com.avenger.bookingyuk.View.Fragments.Info;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
@@ -42,6 +43,9 @@ public class Home extends AppCompatActivity {
                 case R.id.menu_profile:
                     btnLogout.setVisibility(View.GONE);
                     selectedFragment = new FragmentProfile();break;
+                case R.id.menu_info:
+                    btnLogout.setVisibility(View.GONE);
+                    selectedFragment = new Info(); break;
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

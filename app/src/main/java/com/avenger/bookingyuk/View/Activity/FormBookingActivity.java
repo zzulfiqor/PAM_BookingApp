@@ -140,7 +140,6 @@ public class FormBookingActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
         final String currentDateandTime = sdf.format(new Date());
         String idBooked = ""+Preferences.getLoggedInNim(getBaseContext())+""+currentDateandTime;
-        Log.d("zhr",idBooked);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Apakah anda yakin akan melakukan peminjaman ruang ini ?");
