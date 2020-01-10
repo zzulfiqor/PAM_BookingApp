@@ -11,12 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.avenger.bookingyuk.AESChiper.AESUtils;
 import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.Preferences.Preferences;
 import com.avenger.bookingyuk.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import es.dmoral.toasty.Toasty;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -52,28 +55,25 @@ public class EditProfileActivity extends AppCompatActivity {
                 String nim = etNim.getText().toString();
                 String nama = etNama.getText().toString();
                 if (nim.isEmpty()){
-                    Toast.makeText(getBaseContext(), "NIM Harus Diisi",Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     mhs.setNIM(etNim.getText().toString());
                 }
                 mhs.setNama_mahasiswa(etNama.getText().toString());
                 mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
-                if (TextUtils.isEmpty(pass)||pass.length()<8) {
+                if (TextUtils.isEmpty(pass)||pass.length()<6) {
 
-                    Toast.makeText(getBaseContext(), "Damn Your Password is to short !!",Toast.LENGTH_SHORT).show();
+                    Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
 
                     return;
                 } else {
-                    mhs.setPassword_mahasiswa(pass);
+                    mhs.setPassword_mahasiswa(EncryptPassword(pass));
                 }
 
                 mhsRef.child(mhs.getNIM()).setValue(mhs);
                 Preferences.setLoggedInUser(getBaseContext(),nama);
-                Toast.makeText(getBaseContext(),"Data berhasil diubah",Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(EditProfileActivity.this, Home.class);
-                startActivity(i);
+                Toasty.success(getBaseContext(), "Data berhasil diupdate",Toast.LENGTH_SHORT,true).show();
                 finish();
             }
         });
@@ -107,6 +107,17 @@ public class EditProfileActivity extends AppCompatActivity {
         etAlamat = findViewById(R.id.et_alamat_edit);
         etPassword = findViewById(R.id.et_password_edit);
         btnKirim = findViewById(R.id.btn_kirim);
+    }
+
+    String EncryptPassword(String sourceStr){
+        String encrypted = "";
+        try {
+            encrypted = AESUtils.encrypt(sourceStr);
+            return encrypted;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
