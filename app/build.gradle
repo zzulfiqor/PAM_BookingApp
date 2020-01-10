@@ -8,8 +8,8 @@ android {
         applicationId "com.avenger.bookingyuk"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.02"
+        versionCode 4
+        versionName "1.04"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -55,10 +55,7 @@ dependencies {
 //    timeline Calendar
     implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
 
-//    ticket view
-    implementation 'com.vipulasri:ticketview:1.0.7'
-
-// qr code
+//  qr code
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 
 //    Toasty

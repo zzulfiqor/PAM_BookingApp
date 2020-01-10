@@ -111,8 +111,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Illustration"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/softblack"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="https://undraw.co"
+                android:textColor="@color/softblack"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="All Icons"
                 android:textStyle="bold"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/softblack"
                 android:textAlignment="center"/>
 

@@ -1,5 +1,6 @@
 package com.avenger.bookingyuk.View.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,8 +18,11 @@ import com.avenger.bookingyuk.Models.ModelMahasiswa;
 import com.avenger.bookingyuk.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import es.dmoral.toasty.Toasty;
 
@@ -43,29 +47,47 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pass = etPassword.getText().toString();
-                String nim = etNIM.getText().toString();
-                if (nim.isEmpty()){
-                    Toasty.error(getBaseContext(), "NIM tidak boleh kosong",Toast.LENGTH_SHORT,true).show();
-                    return;
-                } else {
-                    mhs.setNIM(etNIM.getText().toString());
-                }
-                mhs.setNama_mahasiswa(etNama.getText().toString());
-                mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
-                if (TextUtils.isEmpty(pass)||pass.length()<6) {
-                    Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
-                    return;
-                } else {
-                    mhs.setPassword_mahasiswa(EncryptPassword(pass));
-                }
+                final String pass = etPassword.getText().toString();
+                final String nim = etNIM.getText().toString();
 
-                mhsRef.child(mhs.getNIM()).setValue(mhs);
+                mhsRef.child(nim).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            Toasty.error(getBaseContext(), "NIM Sudah terdaftar.",Toast.LENGTH_SHORT,true).show();
+                        }else{
+                            if (nim.isEmpty()){
+                                Toasty.error(getBaseContext(), "NIM tidak boleh kosong",Toast.LENGTH_SHORT,true).show();
+                                return;
+                            } else {
+                                mhs.setNIM(etNIM.getText().toString());
+                            }
+                            mhs.setNama_mahasiswa(etNama.getText().toString());
+                            mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
+                            if (TextUtils.isEmpty(pass)||pass.length()<6) {
+                                Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
+                                return;
+                            } else {
+                                mhs.setPassword_mahasiswa(EncryptPassword(pass));
+                            }
 
-                Toasty.success(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG,true).show();
+                            mhsRef.child(mhs.getNIM()).setValue(mhs);
 
-                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(i);
+                            Toasty.success(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG,true).show();
+
+                            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(i);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
             }
         });
 
