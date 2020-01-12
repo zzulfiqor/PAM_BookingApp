@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/halaman_registrasi"
+        android:text="Halaman Pendaftaran"
         android:textColor="@color/softblack"
         android:textSize="12pt"
         android:textStyle="bold"
@@ -116,19 +116,35 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/error_messsage_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/error_message_bg"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="1dp"
+        android:text="Error : Mahasiswa sudah pernah mendaftar."
+        android:textColor="@color/white"
+        android:textSize="6pt"
+        app:layout_constraintEnd_toEndOf="@+id/btn_register"
+        app:layout_constraintStart_toStartOf="@+id/btn_register"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_register" />
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background_purple_rounded"
-        android:text="Register"
+        android:text="Daftar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/et_password_register"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_password_register"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_register" />
+        app:layout_constraintTop_toBottomOf="@+id/error_messsage_register" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

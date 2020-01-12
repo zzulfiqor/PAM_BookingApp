@@ -44,6 +44,8 @@ public class FormBookingActivity extends AppCompatActivity {
     Button btnPinjam;
     int hari, tahun;
     int monthRead;
+    Integer date_,month_,year_;
+    String dateArr[];
     Query q;
     List<Date> myList = new ArrayList<Date>();
 
@@ -100,8 +102,14 @@ public class FormBookingActivity extends AppCompatActivity {
         });
 
 
-        // Set a Start date (Default, 1 Jan 1970)
-        datePicker.setInitialDate(2020, 0, 6);
+        Date currentDate = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(currentDate);
+        dateArr = formattedDate.split("-");
+        date_ = Integer.parseInt(dateArr[0])+1;
+        month_ = Integer.parseInt(dateArr[1])-1;
+        year_ = Integer.parseInt(dateArr[2]);
+        datePicker.setInitialDate(year_, month_, date_);
 
 
 
@@ -114,7 +122,7 @@ public class FormBookingActivity extends AppCompatActivity {
                 hari = day;
                 tahun = year;
 
-                String datenow = day+" / 0"+monthRead+" / "+year;
+                String datenow = hari+" / 0"+monthRead+" / "+tahun;
                 tvTglTerpilih.setText(datenow);
             }
 

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avenger.bookingyuk.AESChiper.AESUtils;
@@ -30,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     TextInputEditText etNIM,etNama,etAlamat, etPassword;
     Button btnRegister;
-
+    TextView errorMsg;
     ModelMahasiswa mhs;
 
     // Write a message to the database
@@ -44,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         componentInit();
         mhs = new ModelMahasiswa();
 
+        hideerrorMsg();
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,31 +56,22 @@ public class RegisterActivity extends AppCompatActivity {
                 mhsRef.child(nim).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            Toasty.error(getBaseContext(), "NIM Sudah terdaftar.",Toast.LENGTH_SHORT,true).show();
-                        }else{
                             if (nim.isEmpty()){
                                 Toasty.error(getBaseContext(), "NIM tidak boleh kosong",Toast.LENGTH_SHORT,true).show();
-                                return;
-                            } else {
-                                mhs.setNIM(etNIM.getText().toString());
-                            }
-                            mhs.setNama_mahasiswa(etNama.getText().toString());
-                            mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
-                            if (TextUtils.isEmpty(pass)||pass.length()<6) {
+                            } else if(dataSnapshot.exists()){
+                                showerrorMsg();
+                            } else if(TextUtils.isEmpty(pass)|| pass.length()<6){
                                 Toasty.error(getBaseContext(), "Password minimal mempunyai 6 karakter",Toast.LENGTH_SHORT,true).show();
-                                return;
-                            } else {
+                            } else{
+                                mhs.setNIM(etNIM.getText().toString());
+                                mhs.setNama_mahasiswa(etNama.getText().toString());
+                                mhs.setAlamat_mahasiswa(etAlamat.getText().toString());
                                 mhs.setPassword_mahasiswa(EncryptPassword(pass));
+                                mhsRef.child(mhs.getNIM()).setValue(mhs);
+                                Toasty.success(getBaseContext(),"Mahasiswa/i berhasil terdaftar.",Toasty.LENGTH_SHORT,true).show();
+                                finish();
                             }
 
-                            mhsRef.child(mhs.getNIM()).setValue(mhs);
-
-                            Toasty.success(getBaseContext(),"Mahasiswa : "+mhs.getNama_mahasiswa()+" Berhasil terdaftar",Toast.LENGTH_LONG,true).show();
-
-                            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(i);
-                        }
                     }
 
                     @Override
@@ -94,12 +88,47 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    private void showerrorMsg() {
+        errorMsg.setVisibility(View.VISIBLE);
+    }
+
+    private void hideerrorMsg() {
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
+
+        etNIM.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
+
+        etAlamat.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
+
+        etNama.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorMsg.setVisibility(View.GONE);
+            }
+        });
+    }
+
     void componentInit(){
         etNIM = findViewById(R.id.et_nim_register_);
         etNama = findViewById(R.id.et_nama_register_);
         etAlamat = findViewById(R.id.et_alamat_register_);
         etPassword = findViewById(R.id.et_password_register_);
         btnRegister = findViewById(R.id.btn_register);
+        errorMsg = findViewById(R.id.error_messsage_register);
     }
 
     String EncryptPassword(String sourceStr){

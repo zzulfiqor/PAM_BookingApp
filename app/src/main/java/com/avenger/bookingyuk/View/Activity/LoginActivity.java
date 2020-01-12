@@ -1,9 +1,11 @@
 package com.avenger.bookingyuk.View.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -139,4 +141,31 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    void showAlertLogout(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Apakah anda ingin keluar dari aplikasi ?");
+        alertDialogBuilder.setPositiveButton("Keluar",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finishAffinity();
+                        finish();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        showAlertLogout();
+    }
 }
